@@ -23,7 +23,7 @@ description: 兼容S3的对象存储服务
 #创建数据保存目录
 mkdir -p ${NFS}/minio/data
 mkdir ${NFS}/minio/conf
-chmod 777 ${NFS}/minio/data
+chmod 775 ${NFS}/minio/data
 ```
 
 ## 启动命令
