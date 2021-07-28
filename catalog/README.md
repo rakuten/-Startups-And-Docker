@@ -64,5 +64,5 @@ description: 数据库脚本管理
 | [Grafana/Promtail](images-ops/grafana/grafana-loki/grafana-promtail.md) | 日志采集系统 | 20M |  | 需配合Loki使用 |
 | [Grafana/Tempo](images-ops/grafana/grafana-tempo.md) | 链路追踪系统 | 72M | 16686 | 需配合Loki使用 |
 | [Prometheus](images-ops/grafana/prometheus/) | 服务监控 | 354M | 9090 | 也是时序数据库 |
-| cAdvisor |  |  |  |  |
+| cAdvisor | Docker状态监控 | 87M |  |  |
 
