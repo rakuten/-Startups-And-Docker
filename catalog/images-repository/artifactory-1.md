@@ -6,6 +6,8 @@ description: NPM仓库
 
 ## 简介
 
+![](../../.gitbook/assets/jfrog.gif)
+
 默认用户，密码  
 admin password
 
@@ -49,4 +51,6 @@ docker.bintray.io/jfrog/artifactory-oss:latest
 
 
 ## 参考
+
+官网: [https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory)
 

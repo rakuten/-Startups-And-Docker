@@ -6,7 +6,7 @@ description: NPM仓库
 
 ## 简介
 
-
+![](../../.gitbook/assets/verdaccio.png)
 
 ## EXPOSE
 
@@ -47,4 +47,6 @@ verdaccio/verdaccio
 
 
 ## 参考
+
+
 
