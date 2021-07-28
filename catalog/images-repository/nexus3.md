@@ -4,6 +4,8 @@
 
 ![](../../.gitbook/assets/nexus3.png)
 
+Nexus3是目前比较流行的仓库管理器，3.27版本开始Groups Push功能仅在Pro版中提供，付费的话约需3000美金左右，所以我们还是以使用3.26版为主。
+
 ## EXPOSE
 
 | 端口 | 用途 |
