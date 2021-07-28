@@ -1,8 +1,8 @@
 ---
-description: Docker企业级仓库
+description: NPM仓库
 ---
 
-# Harbor
+# Verdaccio
 
 ## 简介
 

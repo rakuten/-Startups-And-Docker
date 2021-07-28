@@ -64,6 +64,7 @@
     * [Harbor](catalog/images-repository/harbor.md)
     * [Registry](catalog/images-repository/registry.md)
     * [Artifactory](catalog/images-repository/artifactory-1.md)
+    * [Verdaccio](catalog/images-repository/verdaccio.md)
     * [Nexus3](catalog/images-repository/nexus3.md)
   * [区块链](catalog/images-blc/README.md)
     * [Ethereum](catalog/images-blc/ethereum.md)
