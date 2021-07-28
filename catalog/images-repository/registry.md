@@ -6,7 +6,7 @@ description: Docker仓库
 
 ## 简介
 
-
+![](../../.gitbook/assets/docker-registry-fontend.webp)
 
 ## EXPOSE
 
@@ -33,8 +33,6 @@ docker run -d \
 --name registry \
 --restart unless-stopped \
 -e TZ=Asia/Shanghai \
---restart always \
--e TZ=Asia/Shanghai \
 -p 5000:5000 \
 -v ${NFS}/registry:/var/lib/registry \
 registry
@@ -46,7 +44,18 @@ registry
 {% endtab %}
 {% endtabs %}
 
+### docker-registry-frontend\(前端UI，可选\)
 
+```bash
+docker run -d \
+--name registry-web \
+--restart unless-stopped \
+-e TZ=Asia/Shanghai \
+-e ENV_DOCKER_REGISTRY_HOST=ENTER-YOUR-REGISTRY-HOST-HERE \
+-e ENV_DOCKER_REGISTRY_PORT=ENTER-PORT-TO-YOUR-REGISTRY-HOST-HERE \
+-p 80:80 \
+konradkleine/docker-registry-frontend:v2
+```
 
 ## 参考
 
