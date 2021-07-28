@@ -12,9 +12,9 @@ description: 波场
 
 | 端口 | 用途 |
 | :--- | :--- |
-| 8090 | full node HTTP API |
-| 8091 | solidity node HTTP API |
-| 18888 | P2P端口 |
+| 8090 | Full Node HTTP API |
+| 8091 | Solidity Node HTTP API |
+| 18888 | P2P 端口 |
 
 
 
