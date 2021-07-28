@@ -44,7 +44,7 @@ registry
 {% endtab %}
 {% endtabs %}
 
-### docker-registry-frontend\(前端UI，可选\)
+* WEB界面\(可选\)
 
 ```bash
 docker run -d \
