@@ -17,6 +17,12 @@ description: Docker企业级仓库
 
 
 
+## 前置准备
+
+```bash
+
+```
+
 ## 启动命令
 
 {% tabs %}
