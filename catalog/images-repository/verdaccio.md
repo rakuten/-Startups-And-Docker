@@ -21,7 +21,7 @@ description: NPM仓库
 ```bash
 #创建数据保存目录
 mkdir $NFS/verdaccio
-chmod 775 $NFS/verdaccio
+chmod 777 $NFS/verdaccio
 ```
 
 ## 启动命令

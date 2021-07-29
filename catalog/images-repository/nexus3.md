@@ -19,7 +19,7 @@ Nexus3是目前比较流行的仓库管理器，3.27版本开始Groups Push功�
 ```bash
 #创建数据保存目录
 mkdir ${NFS}/nexus
-chmod -R 775 $NFS/nexus
+chmod -R 777 $NFS/nexus
 ```
 
 ## 启动命令

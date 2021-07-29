@@ -21,7 +21,7 @@ description: Docker仓库
 ```bash
 #创建数据保存目录
 mkdir ${NFS}/registry
-chmod -R 775 $NFS/registry
+chmod -R 777 $NFS/registry
 ```
 
 ## 启动命令

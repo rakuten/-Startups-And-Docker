@@ -1,5 +1,5 @@
 ---
-description: NPM仓库
+description: 仓库管理器
 ---
 
 # Artifactory
@@ -7,6 +7,8 @@ description: NPM仓库
 ## 简介
 
 ![](../../.gitbook/assets/jfrog.gif)
+
+Nexus3的竞品，功能更强大一些，而且虽然镜像文件比Nexus3大100M，但初始运行内存只有1.4G，反而比Nexus3少300M
 
 默认用户，密码  
 admin password
@@ -23,7 +25,7 @@ admin password
 ```bash
 #创建数据保存目录
 sudo mkdir $NFS/artifactory
-sudo chown -R 775 $NFS/artifactory
+sudo chmod -R 777 $NFS/artifactory
 ```
 
 ## 启动命令
@@ -38,8 +40,6 @@ docker run -d \
 -p 8081:8081 -p 8082:8082 \
 -v $NFS/artifactory:/var/opt/jfrog/artifactory \
 docker.bintray.io/jfrog/artifactory-oss:latest
-
-
 ```
 {% endtab %}
 
