@@ -66,3 +66,20 @@ description: 数据库脚本管理
 | [Prometheus](images-ops/grafana/prometheus/) | 服务监控 | 354M | 9090 | 也是时序数据库 |
 | cAdvisor | Docker状态监控 | 87M |  |  |
 
+### 私有仓库
+
+| 名称 | 用途 | 内存占用 | 端口映射 | 备注 |
+| :---: | :---: | :---: | :---: | :---: |
+| Harbor |  |  |  |  |
+| [Registry](images-repository/registry.md) |  |  |  |  |
+| [Nexus3](images-repository/nexus3.md) |  |  |  |  |
+| [Artifactory](images-repository/artifactory-1.md) |  |  |  |  |
+| [Verdaccio](images-repository/verdaccio.md) |  |  |  |  |
+
+| 名称 | 用途 | 内存占用 | 端口映射 | 备注 |
+| :---: | :---: | :---: | :---: | :---: |
+| [Ethereum](images-blc/ethereum.md) | 以太坊 |  |  |  |
+| [Tron](images-blc/tron.md) | 波场 |  |  |  |
+| [IPFS](images-blc/ipfs.md) |  |  |  |  |
+| [Swarm Bee](images-blc/bee.md) |  |  |  |  |
+
