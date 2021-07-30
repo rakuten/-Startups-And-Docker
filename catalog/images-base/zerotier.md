@@ -12,7 +12,7 @@ description: P2P VPN
 
 名词解释
 
-> Controller  控制台界面，可选用或自架[ztncui](https://github.com/key-networks/ztncui)  
+> Controller  控制台界面，可选用[官网控制台](https://my.zerotier.com/)或自架[ztncui](https://github.com/key-networks/ztncui)  
 > PLANET 行星服务器，Zerotier 根服务器   
 > MOON 卫星服务器，用户自建的私有根服务器，起到代理加速的作用   
 > LEAF 网络客户端，也就是每台需连到服务器的客户端
