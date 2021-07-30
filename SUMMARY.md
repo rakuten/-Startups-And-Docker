@@ -17,6 +17,7 @@
     * [Synapse](catalog/images-base/synapse/README.md)
       * [element-web](catalog/images-base/synapse/element-web.md)
     * [Bitwarden](catalog/images-base/bitwarden.md)
+    * [ZeroTier](catalog/images-base/zerotier.md)
     * [Ocserv](catalog/images-base/ocserv.md)
   * [开发应用](catalog/images-develop/README.md)
     * [文档](catalog/images-develop/docs/README.md)
