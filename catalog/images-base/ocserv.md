@@ -80,7 +80,6 @@ docker service create --replicas 1 \
 -e VPN_PASSWORD=password \
 -p 9872:443 \
 --mount type=bind,src=${NFS}/ocserv/certs,dst=/etc/ocserv/certs \
-icodex/docker-ocserv
 --mount type=bind,src=${NFS}/ocserv/defaults,dst=/etc/ocserv/defaults \
 --mount type=bind,src=${NFS}/ocserv/ocserv.conf,dst=/etc/ocserv/ocserv.conf \
 icodex/docker-ocserv
