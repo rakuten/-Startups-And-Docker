@@ -17,6 +17,30 @@ description: OpenConnect VPN服务端
 
 
 
+## 前置准备
+
+```bash
+#创建数据保存目录
+mkdir ${NFS}/ocserv
+chmod 777 ${NFS}/ocserv
+
+#生成配置文件
+docker run -d \
+--name ocserv \
+-e VPN_DOMAIN=sec.${DOMAIN} \
+-e VPN_NETWORK=10.8.8.0 \
+-e VPN_NETMASK=255.255.255.0 \
+-e LAN_NETWORK=172.16.0.0 \
+-e LAN_NETMASK=255.255.0.0 \
+-e VPN_USERNAME=admin \
+-e VPN_PASSWORD=password \
+-v ${NFS}/ocserv/certs:/etc/ocserv/certs \
+icodex/docker-ocserv
+
+#备份配置文件
+docker cp ocserv:/etc/ocserv/ocserv.conf $NFS/ocserv/
+```
+
 ## 启动命令
 
 {% tabs %}
@@ -25,10 +49,16 @@ description: OpenConnect VPN服务端
 docker run -d \
 --name ocserv \
 --restart unless-stopped \
---privileged \
--p 8989:8989/tcp \
--v /nfs/data/ocserv:/etc/ocserv \
-wppurking/ocserv
+-e VPN_DOMAIN=sec.${DOMAIN} \
+-e VPN_NETWORK=10.8.8.0 \
+-e VPN_NETMASK=255.255.255.0 \
+-e LAN_NETWORK=172.16.0.0 \
+-e LAN_NETMASK=255.255.0.0 \
+-e VPN_USERNAME=admin \
+-e VPN_PASSWORD=password \
+-p 9872:443 \
+-v ${NFS}/ocserv/certs:/etc/ocserv/certs \
+icodex/docker-ocserv
 ```
 {% endtab %}
 
@@ -38,15 +68,42 @@ docker service create --replicas 1 \
 --name ocserv \
 --network staging \
 -e TZ=Asia/Shanghai \
--e VPN_DOMAIN=vpn.easypi.pro \
--e LAN_NETWORK=192.168.0.0 \
+-e VPN_DOMAIN=sec.${DOMAIN} \
+-e VPN_NETWORK=10.8.8.0 \
+-e VPN_NETMASK=255.255.255.0 \
+-e LAN_NETWORK=172.16.0.0 \
 -e LAN_NETMASK=255.255.0.0 \
--e VPN_USERNAME=username \
+-e VPN_USERNAME=admin \
 -e VPN_PASSWORD=password \
---mount type=bind,src=${NFS}/ocserv/group.conf,dst=/etc/ocserv/defaults/group.conf \
---mount type=bind,src=${NFS}/ocserv/client.p12,dst=/etc/ocserv/certs/client.p12 \
---mount type=bind,src=${NFS}/ocserv/server-cert.pem,dst=/etc/ocserv/certs/server-cert.pem \
-vimagick/ocserv
+-p 9872:443 \
+--mount type=bind,src=${NFS}/ocserv/certs,dst=/etc/ocserv/certs \
+--mount type=bind,src=${NFS}/ocserv/defaults,dst=/etc/ocserv/defaults \
+--mount type=bind,src=${NFS}/ocserv/ocserv.conf,dst=/etc/ocserv/ocserv.conf \
+icodex/docker-ocserv
+```
+{% endtab %}
+
+{% tab title="Compose" %}
+```
+ocserv:
+  image: icodex/docker-ocserv
+  ports:
+    - "443:443/tcp"
+    - "443:443/udp"
+  volumes:
+    - /opt/ocserv/certs:/etc/ocserv/certs
+  environment:
+    - VPN_DOMAIN=sec.${DOMAIN}
+    - VPN_PORT=443
+    - VPN_NETWORK=10.8.8.0
+    - VPN_NETMASK=255.255.255.0
+    - LAN_NETWORK=172.16.0.0
+    - LAN_NETMASK=255.255.0.0
+    - VPN_USERNAME=admin
+    - VPN_PASSWORD=password
+  cap_add:
+    - NET_ADMIN
+  restart: always
 ```
 {% endtab %}
 {% endtabs %}

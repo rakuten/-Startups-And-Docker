@@ -18,7 +18,7 @@ description: 数据库脚本管理
 | [Synapse](images-base/synapse/) | 聊天室服务器 | 87M | 8008,8448 |  |
 | [Dokuwiki](images-base/dokuwiki.md) | Wiki |  | 80,443 | - |
 | [Outline](images-base/outline.md) | Gitbook开源替代品 |  | 3000 |  |
-| [Ocserv](images-base/ocserv.md) | OpenConnect VPN服务端 |  | 443 | 兼容Cisco Anyconnect |
+| [Ocserv](images-base/ocserv.md) | OpenConnect VPN服务端 | 3M | 443 | 兼容Cisco Anyconnect |
 | [Bitwarden](images-base/bitwarden.md) | 开源的密码管理服务 |  | 53,8080 | 供客户端程序使用 |
 | PhotoPrism | 照片分享平台 |  |  |  |
 
