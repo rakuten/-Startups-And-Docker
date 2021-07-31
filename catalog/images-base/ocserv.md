@@ -21,7 +21,7 @@ description: OpenConnect VPN服务端
 
 ```bash
 #创建数据保存目录
-mkdir ${NFS}/ocserv
+mkdir -p ${NFS}/ocserv/certs
 chmod 777 ${NFS}/ocserv
 
 #生成配置文件
@@ -39,6 +39,9 @@ icodex/docker-ocserv
 
 #备份配置文件
 docker cp ocserv:/etc/ocserv/ocserv.conf $NFS/ocserv/
+
+#删除实例
+docker rm -f ocserv
 ```
 
 ## 启动命令
@@ -77,6 +80,7 @@ docker service create --replicas 1 \
 -e VPN_PASSWORD=password \
 -p 9872:443 \
 --mount type=bind,src=${NFS}/ocserv/certs,dst=/etc/ocserv/certs \
+icodex/docker-ocserv
 --mount type=bind,src=${NFS}/ocserv/defaults,dst=/etc/ocserv/defaults \
 --mount type=bind,src=${NFS}/ocserv/ocserv.conf,dst=/etc/ocserv/ocserv.conf \
 icodex/docker-ocserv
