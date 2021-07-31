@@ -22,7 +22,7 @@ description: OpenConnect VPN服务端
 ```bash
 #创建数据保存目录
 mkdir -p ${NFS}/ocserv/certs
-chmod 777 ${NFS}/ocserv
+chmod 777 -R ${NFS}/ocserv
 
 #生成配置文件
 docker run -d \
@@ -34,6 +34,7 @@ docker run -d \
 -e LAN_NETMASK=255.255.0.0 \
 -e VPN_USERNAME=admin \
 -e VPN_PASSWORD=password \
+--cap-add NET_ADMIN \
 -v ${NFS}/ocserv/certs:/etc/ocserv/certs \
 icodex/docker-ocserv
 
@@ -53,12 +54,6 @@ docker run -d \
 --name ocserv \
 --restart unless-stopped \
 -e VPN_DOMAIN=sec.${DOMAIN} \
--e VPN_NETWORK=10.8.8.0 \
--e VPN_NETMASK=255.255.255.0 \
--e LAN_NETWORK=172.16.0.0 \
--e LAN_NETMASK=255.255.0.0 \
--e VPN_USERNAME=admin \
--e VPN_PASSWORD=password \
 -p 9872:443 \
 -v ${NFS}/ocserv/certs:/etc/ocserv/certs \
 icodex/docker-ocserv
@@ -72,13 +67,8 @@ docker service create --replicas 1 \
 --network staging \
 -e TZ=Asia/Shanghai \
 -e VPN_DOMAIN=sec.${DOMAIN} \
--e VPN_NETWORK=10.8.8.0 \
--e VPN_NETMASK=255.255.255.0 \
--e LAN_NETWORK=172.16.0.0 \
--e LAN_NETMASK=255.255.0.0 \
--e VPN_USERNAME=admin \
--e VPN_PASSWORD=password \
 -p 9872:443 \
+--cap-add NET_ADMIN \
 --mount type=bind,src=${NFS}/ocserv/certs,dst=/etc/ocserv/certs \
 --mount type=bind,src=${NFS}/ocserv/defaults,dst=/etc/ocserv/defaults \
 --mount type=bind,src=${NFS}/ocserv/ocserv.conf,dst=/etc/ocserv/ocserv.conf \
