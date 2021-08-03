@@ -40,6 +40,7 @@ icodex/docker-ocserv
 
 #备份配置文件
 docker cp ocserv:/etc/ocserv/ocserv.conf $NFS/ocserv/
+docker cp ocserv:/etc/ocserv/ocpasswd $NFS/ocserv/
 
 #删除实例
 docker rm -f ocserv
@@ -56,6 +57,8 @@ docker run -d \
 -e VPN_DOMAIN=sec.${DOMAIN} \
 -p 9872:443 \
 -v ${NFS}/ocserv/certs:/etc/ocserv/certs \
+-v ${NFS}/ocserv/ocserv.conf:/etc/ocserv/ocserv.conf \
+-v ${NFS}/ocserv/ocpasswd:/etc/ocserv/ocpasswd \
 icodex/docker-ocserv
 ```
 {% endtab %}
@@ -70,8 +73,8 @@ docker service create --replicas 1 \
 -p 9872:443 \
 --cap-add NET_ADMIN \
 --mount type=bind,src=${NFS}/ocserv/certs,dst=/etc/ocserv/certs \
---mount type=bind,src=${NFS}/ocserv/defaults,dst=/etc/ocserv/defaults \
 --mount type=bind,src=${NFS}/ocserv/ocserv.conf,dst=/etc/ocserv/ocserv.conf \
+--mount type=bind,src=${NFS}/ocserv/ocpasswd,dst=/etc/ocserv/ocpasswd \
 icodex/docker-ocserv
 ```
 {% endtab %}
@@ -84,7 +87,9 @@ ocserv:
     - "443:443/tcp"
     - "443:443/udp"
   volumes:
-    - /opt/ocserv/certs:/etc/ocserv/certs
+    - ${NFS}/ocserv/certs:/etc/ocserv/certs
+    - ${NFS}/ocserv/ocserv.conf:/etc/ocserv/ocserv.conf
+    - ${NFS}/ocserv/ocpasswd:/etc/ocserv/ocpasswd
   environment:
     - VPN_DOMAIN=sec.${DOMAIN}
     - VPN_PORT=443

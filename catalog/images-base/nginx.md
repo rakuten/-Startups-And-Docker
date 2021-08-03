@@ -30,7 +30,7 @@ mkdir -p ${NFS}/nginx/conf/conf.d
 #复制配置文件
 docker run -d --name tmp-nginx nginx  
 docker cp tmp-nginx:/etc/nginx/nginx.conf ${NFS}/nginx/conf/
-docker cp tmp-nginx:/etc/nginx/conf/conf.d ${NFS}/nginx/conf/conf.d/
+docker cp tmp-nginx:/etc/nginx/conf/conf.d ${NFS}/nginx/conf/conf.d
 docker rm -f tmp-nginx
 ```
 
