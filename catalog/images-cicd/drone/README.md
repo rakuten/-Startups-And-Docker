@@ -40,8 +40,7 @@ ENV DRONE_VERSION 2.0.6
 WORKDIR /src
 
 # Build with online code
-RUN apk add curl && \
-    curl -L https://download.fastgit.org/drone/drone/archive/refs/tags/v${DRONE_VERSION}.tar.gz -o v${DRONE_VERSION}.tar.gz && \
+RUN wget https://download.fastgit.org/drone/drone/archive/refs/tags/v${DRONE_VERSION}.tar.gz -O v${DRONE_VERSION}.tar.gz && \
     tar zxvf v${DRONE_VERSION}.tar.gz && \
     rm v${DRONE_VERSION}.tar.gz
 # OR with offline tarball
