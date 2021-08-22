@@ -11,7 +11,7 @@ description: 日志聚合系统
 Loki 由以下3个部分组成：
 
 * `loki`是主服务器，负责存储日志和处理查询。
-* `promtail`是代理，负责收集日志并将其发送给 loki 。
+* `promtail`是监控，负责收集日志并将其发送给 loki 。
 * `Grafana`用于 UI 展示。
 
 Loki支持以下应用作为日志数据发送方
