@@ -12,7 +12,7 @@ description: DNS服务器端
 
 | 端口 | 用途 |
 | :--- | :--- |
-| 53 | DNS |
+| 53 | DNS端口 |
 | 8080 | 管理页面 |
 
 
@@ -74,7 +74,23 @@ jpillora/dnsmasq
 {% endtab %}
 {% endtabs %}
 
+* 编辑/etc/docker/daemon.json并添加dns节点
 
+```bash
+{
+  "dns":[
+    "服务器IP地址" #包含引号
+  ]
+}
+```
+
+```bash
+#更改权限，不然docker重启时会报错
+chmod 777 /etc/docker/daemon.json
+
+#重启Docker
+systemctl restart docker
+```
 
 ## 参考
 
