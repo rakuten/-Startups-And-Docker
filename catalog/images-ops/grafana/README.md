@@ -73,3 +73,6 @@ grafana/grafana
 
 ## 参考
 
+面板:  
+[Grafana Loki Dashboard for NGINX Service Mesh](https://grafana.com/grafana/dashboards/12559)
+

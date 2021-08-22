@@ -49,14 +49,16 @@ RUN wget https://download.fastgit.org/drone/drone/archive/refs/tags/v${DRONE_VER
 WORKDIR /src/drone-${DRONE_VERSION}
 
 # OR with master branches
-#RUN apk add curl && curl -L https://github.com/drone/drone/archive/refs/heads/master.tar.gz -o master.tar.gz && \
-#    unzip master.tar.gz && rm master.tar.gz
+#RUN wget -L https://github.com/drone/drone/archive/refs/heads/master.tar.gz -o master.tar.gz && \
+#    tar zxvf master.tar.gz && \
+#    rm master.tar.gz
 #WORKDIR /src/drone-master
 
 ENV CGO_CFLAGS="-g -O2 -Wno-return-local-addr"
 
 RUN go env -w GO111MODULE=on && \
-    go env -w GOPROXY=https://goproxy.cn/,direct && \
+    go env -w GOPROXY=https://mirrors.aliyun.com/goproxy/,direct && \
+    #go env -w GOPROXY=https://goproxy.cn/,direct && \
     go mod download
 
 RUN go build -ldflags "-extldflags \"-static\"" -tags="nolimit" github.com/drone/drone/cmd/drone-server
@@ -67,7 +69,6 @@ FROM alpine:3.14 AS Certs
 RUN sed -i 's/https:\/\/dl-cdn.alpinelinux.org/http:\/\/mirrors.tuna.tsinghua.edu.cn/' /etc/apk/repositories && \
     echo "Asia/Shanghai" > /etc/timezone
 RUN apk add -U --no-cache ca-certificates
-
 
 
 FROM alpine:3.14

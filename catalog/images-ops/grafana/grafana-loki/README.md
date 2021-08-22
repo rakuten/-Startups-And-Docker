@@ -84,7 +84,7 @@ docker service create --replicas 1 \
 -e JAEGER_SAMPLER_TYPE=const \
 -e JAEGER_SAMPLER_PARAM=100 \
 --label traefik.enable=false \
-grafana/loki
+grafana/loki:2.3.0
 ```
 {% endtab %}
 {% endtabs %}
