@@ -71,6 +71,12 @@ xavierniu/cloudreve
 {% endtab %}
 {% endtabs %}
 
+* 查看初始密码
+
+```bash
+docker service logs cloudreve
+```
+
 * 修改默认数据库位置，然后重启
 
 ```bash
@@ -82,12 +88,7 @@ DBFile = /cloudreve/db/cloudreve.db
 docker service update --image xavierniu/cloudreve cloudreve
 ```
 
-* 查看初始密码
-
-```bash
-docker logs -f cloudreve
-```
-
+* 
 ## 参考
 
 配置文件参考: [https://docs.cloudreve.org/getting-started/config](https://docs.cloudreve.org/getting-started/config)
