@@ -50,8 +50,8 @@ xavierniu/cloudreve
 docker service create --replicas 1 \
 --name cloudreve \
 --network staging \
--e PUID=1000 \ # optional
--e PGID=1000 \ # optional
+-e PUID=1000 \ # 可选
+-e PGID=1000 \ # 可选
 -e TZ=Asia/Shanghai \
 --mount type=bind,src=${NFS}/cloudreve/uploads,dst=/cloudreve/uploads \
 --mount type=bind,src=${NFS}/cloudreve/config,dst=/cloudreve/config \
