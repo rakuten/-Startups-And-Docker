@@ -13,6 +13,7 @@
     * [Minio](catalog/images-base/minio.md)
     * [Wordpress](catalog/images-base/wordpress.md)
     * [Dokuwiki](catalog/images-base/dokuwiki.md)
+    * [Cloudreve](catalog/images-base/cloudreve.md)
     * [Outline](catalog/images-base/outline.md)
     * [Synapse](catalog/images-base/synapse/README.md)
       * [element-web](catalog/images-base/synapse/element-web.md)

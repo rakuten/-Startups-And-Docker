@@ -12,6 +12,7 @@ description: 数据库脚本管理
 | [APISix](images-base/apisix/) | API网关 | 103M | 9080,9443 | - |
 | [Nginx](images-base/nginx.md) | Web Server | 3M | 80,443 | - |
 | [NextCloud](images-base/nexcloud.md) | OAuth供应器,WebDAV,文件共享 | 126M | 80 | 可将文件存储至Minio |
+| [Cloudreve](https://github.com/cloudreve/Cloudreve) | 网盘 |  |  |  |
 | [Minio](images-base/minio.md) | 对象存储 | 165M | 9000 | 兼容S3协议 |
 | [Wordpress](images-base/wordpress.md) | 开源博客平台 |  | 80 | - |
 | Flarum | 开源论坛 |  |  |  |
