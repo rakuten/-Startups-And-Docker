@@ -24,6 +24,7 @@ mkdir ${NFS}/grafana
 
 chmod 777 
 
+wget -O ${NFS}/grafana/grafana.ini https://raw.githubusercontent.com/grafana/grafana/main/conf/sample.ini
 wget -O ${NFS}/grafana/datasources.yaml https://github.com/grafana/tempo/blob/main/example/docker-compose/loki/grafana-datasources.yaml
 ```
 
@@ -73,6 +74,6 @@ grafana/grafana
 
 ## 参考
 
-面板:  
-[Grafana Loki Dashboard for NGINX Service Mesh](https://grafana.com/grafana/dashboards/12559)
+面板:[Grafana Loki Dashboard for NGINX Service Mesh](https://grafana.com/grafana/dashboards/12559)  
+报错:[https://www.cnblogs.com/alisapine/p/15080982.html](https://www.cnblogs.com/alisapine/p/15080982.html)
 
