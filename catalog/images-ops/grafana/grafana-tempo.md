@@ -17,11 +17,12 @@ Tempo配置相对比较复杂，你可以通过\[[官方范例](https://github.c
 | 16686 | WEB管理页面 |
 | 3200 | HTTP数据查询端口 |
 | 9095 | gRPC数据查询端口 |
-| 55680 | OpenTelemetry |
+| 55680 | OpenTelemetry gRPC |
+| 55681 | OpenTelemetry HTTP |
 | 6831 | Jaeger - Thrift Compact |
 | 6832 | Jaeger - Thrift Binary |
 | 14268 | Jaeger - Thrift HTTP |
-| 14250 | Jaeger - GRPC |
+| 14250 | Jaeger - gRPC |
 | 9411 | Zipkin |
 
 ## 前置准备
