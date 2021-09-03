@@ -15,7 +15,7 @@ Tempo配置相对比较复杂，你可以通过\[[官方范例](https://github.c
 | 端口 | 用途 |
 | :--- | :--- |
 | 16686 | WEB管理页面 |
-| 3100 | HTTP数据查询端口 |
+| 3200 | HTTP数据查询端口 |
 | 9095 | gRPC数据查询端口 |
 | 55680 | OpenTelemetry |
 | 6831 | Jaeger - Thrift Compact |
