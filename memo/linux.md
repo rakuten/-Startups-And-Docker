@@ -1,6 +1,6 @@
 # Linux
 
-
+* 用户管理
 
 ```bash
 #添加新用户
@@ -14,7 +14,7 @@ sudo passwd 密码
 userdel 用户名
 ```
 
-
+* 进程管理
 
 ```bash
 ## 找到进程的pid
@@ -25,5 +25,24 @@ top -p 进程id
 
 ## 每隔1秒查看进程状态，总共10次的数据
 pidstat 1 10
+```
+
+* 更改DNS Server
+
+```bash
+vi /etc/resolv.conf
+#nameserver 8.8.8.8
+
+systemctl restart networking
+```
+
+* 共享管理
+
+```bash
+#挂载Windows目录
+sudo mount -t cifs -o username=guest,password="",uid=1000,gid=1000,iocharset=utf8,vers=3.0,sec=ntlm,noexec,auto,rw //192.168.0.54/DataDisk /mnt/share2
+
+#vi /etc/fstab
+//192.168.0.54/DataDisk /mnt/share2 cifs username=guest,password=,iocharset=utf8,vers=3.0,sec=ntlm,noexec,auto,rw,users 0 0
 ```
 
