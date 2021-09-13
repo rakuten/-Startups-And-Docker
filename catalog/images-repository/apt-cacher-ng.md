@@ -33,7 +33,7 @@ mkdir ${NFS}/acng/logs
 -e TZ=Asia/Shanghai \
 -p 3142:3142 \
 -v ${NFS}/acng/data:/var/cache/apt-cacher-ng \
--v /mnt/share2/nfs/acng/logs:/var/log/apt-cacher-ng \
+-v ${NFS}/acng/logs:/var/log/apt-cacher-ng \
 --label traefik.enable=false \
 konstruktoid/apt-cacher-ng
 ```
