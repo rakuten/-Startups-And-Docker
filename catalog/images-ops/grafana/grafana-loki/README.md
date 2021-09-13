@@ -82,7 +82,7 @@ docker service create --replicas 1 \
 -e JAEGER_AGENT_HOST=tempo \
 -e JAEGER_ENDPOINT="http://tempo:14268/api/traces" \
 -e JAEGER_SAMPLER_TYPE=const \
--e JAEGER_SAMPLER_PARAM=1 \
+-e JAEGER_SAMPLER_PARAM=100 \
 --label traefik.enable=false \
 grafana/loki:2.3.0
 ```
