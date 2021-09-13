@@ -58,3 +58,5 @@ konstruktoid/apt-cacher-ng
 
 ## 参考
 
+官网: [https://www.unix-ag.uni-kl.de/~bloch/acng/](https://www.unix-ag.uni-kl.de/~bloch/acng/)
+
