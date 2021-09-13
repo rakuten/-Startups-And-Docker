@@ -1,5 +1,5 @@
 ---
-description: Go modules 镜像代理服务
+description: Go 源缓存服务
 ---
 
 # GOPROXY
@@ -12,7 +12,7 @@ description: Go modules 镜像代理服务
 
 | 端口 | 用途 |
 | :--- | :--- |
-| 8081 | 管理页面 |
+| 8081 | 通讯端口 |
 
 
 
@@ -32,8 +32,8 @@ docker run -d \
 --restart unless-stopped \
 -e TZ=Asia/Shanghai \
 --name traefik \
--p8081:8081 \
--v /nfs/goproxy:/go \
+-p 8081:8081 \
+-v /${NFS}/goproxy:/go \
 goproxy/goproxy
 ```
 {% endtab %}

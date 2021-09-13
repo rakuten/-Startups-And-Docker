@@ -15,13 +15,14 @@ Tempo配置相对比较复杂，你可以通过\[[官方范例](https://github.c
 | 端口 | 用途 |
 | :--- | :--- |
 | 16686 | WEB管理页面 |
-| 3100 | HTTP数据查询端口 |
+| 3200 | HTTP数据查询端口 |
 | 9095 | gRPC数据查询端口 |
-| 55680 | OpenTelemetry |
+| 55680 | OpenTelemetry gRPC |
+| 55681 | OpenTelemetry HTTP |
 | 6831 | Jaeger - Thrift Compact |
 | 6832 | Jaeger - Thrift Binary |
 | 14268 | Jaeger - Thrift HTTP |
-| 14250 | Jaeger - GRPC |
+| 14250 | Jaeger - gRPC |
 | 9411 | Zipkin |
 
 ## 前置准备
@@ -50,6 +51,7 @@ docker service create --replicas 1 \
 --network staging \
 -e TZ=Asia/Shanghai \
 -p 16686:16686 \
+-p 14268:14268 \
 --mount type=bind,src=${NFS}/tempo/tempo-local.yaml,dst=/etc/tempo.yaml \
 --mount type=bind,src=/tmp/tempo,dst=/tmp/tempo \
 --log-driver=loki \
@@ -62,7 +64,7 @@ grafana/tempo \
 #Traefik添加追踪变量(需重启)
 --tracing.jaeger=true
 --tracing.jaeger.propagation=jaeger
---tracing.jaeger.collector.endpoint=http://tempo:14268/api/traces?format=jaeger.thrift
+--tracing.jaeger.collector.endpoint=http://tempo.${DOMAIN}:14268/api/traces?format=jaeger.thrift
 
 ```
 {% endtab %}
