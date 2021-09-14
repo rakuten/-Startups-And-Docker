@@ -36,7 +36,7 @@ description: 数据库脚本管理
 | [RabbitMQ](images-develop/cache/rabbitmq.md) | 开源消息队列 | 83M | 5672,15672 |  |
 | [Adminer](images-develop/database/adminer.md) | 多类型数据库管理 |  | 8080 | 类似PhpMyAdmin |
 | [YApi](images-develop/docs/yapi.md) | 接口管理文档 |  | 3000 | - |
-| Flyway | 数据库脚本管理 |  |  | - |
+| [Flyway](images-develop/docs/flyway.md) | 数据库脚本管理 |  |  | - |
 
 ### CI/CD
 
@@ -65,7 +65,7 @@ description: 数据库脚本管理
 | [Grafana/Promtail](images-ops/grafana/grafana-loki/grafana-promtail.md) | 日志采集系统 | 20M |  | 需配合Loki使用 |
 | [Grafana/Tempo](images-ops/grafana/grafana-tempo.md) | 链路追踪系统 | 72M | 16686 | 需配合Loki使用 |
 | [Prometheus](images-ops/grafana/prometheus/) | 服务监控 | 354M | 9090 | 也是时序数据库 |
-| cAdvisor | Docker状态监控 | 87M |  |  |
+| [cAdvisor](images-ops/grafana/cadvisor.md) | Docker状态监控 | 87M |  |  |
 
 ### 私有仓库
 
