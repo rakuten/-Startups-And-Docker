@@ -6,7 +6,7 @@ description: Docker仓库
 
 ## 简介
 
-![](../../.gitbook/assets/docker-registry-fontend.webp)
+![](../../.gitbook/assets/registry.png)
 
 ## EXPOSE
 
