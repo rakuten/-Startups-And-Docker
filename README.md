@@ -8,9 +8,9 @@ description: 如果只有一台4G内存的ECS但却啥都想要怎么办?
 
 | 名称 | 用途 | 内存占用 |   端口映射 | 备注 |
 | :---: | :---: | :---: | :---: | :---: |
-| [Traefik](catalog/images-base/traefik.md) | 网关 | 25M | 80,443,8080 | 替代Nginx转发功能 |
+| [Traefik](catalog/images-base/traefik.md) | 开源云原生网关 | 25M | 80,443,8080 | 替代Nginx转发功能 |
 | [APISix](catalog/images-base/apisix/) | API网关 | 103M | 9080,9443 | - |
-| [Nginx](catalog/images-base/nginx.md) | Web Server | 3M | 80,443 | - |
+| [Nginx](catalog/images-base/nginx.md) | Web服务器 | 3M | 80,443 | - |
 | [NextCloud](catalog/images-base/nexcloud.md) | OAuth供应器,WebDAV,文件共享 | 126M | 80 | 可将文件存储至Minio |
 | [Cloudreve](catalog/images-base/cloudreve.md) | 开源网盘 | 33M | 5212 | 可将文件存储至公有云 |
 | [Minio](catalog/images-base/minio.md) | 对象存储 | 165M | 9000 | 兼容S3协议 |

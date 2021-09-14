@@ -6,7 +6,7 @@ description: 可视化容器管理工具
 
 ## 简介
 
-
+使用了稍旧一点的版本，单机的话功能足够，但可以省去启动agent
 
 ## EXPOSE
 
@@ -55,5 +55,5 @@ portainer/portainer:1.24.1-alpine
 
 ## 参考
 
-
+官网: [https://www.portainer.io/](https://www.portainer.io/)
 
