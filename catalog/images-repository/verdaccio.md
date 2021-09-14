@@ -40,7 +40,16 @@ verdaccio/verdaccio
 {% endtab %}
 
 {% tab title="Swarm" %}
-
+```bash
+docker service create --replicas 1 \
+--name verdaccio \
+--network staging \
+-e TZ=Asia/Shanghai \
+-p 4873:4873 \
+--mount type=bind,src=${NFS}/verdaccio,dst=/verdaccio/storage \
+--label traefik.enable=false \
+verdaccio/verdaccio
+```
 {% endtab %}
 {% endtabs %}
 
