@@ -19,7 +19,7 @@ description: Go 源缓存服务
 ## 前置准备
 
 ```bash
-
+mkdir ${NFS}/goproxy
 ```
 
 ## 启动命令
@@ -31,15 +31,24 @@ docker run -d \
 --network=backend \
 --restart unless-stopped \
 -e TZ=Asia/Shanghai \
---name traefik \
+--name goproxy \
 -p 8081:8081 \
--v /${NFS}/goproxy:/go \
+-v ${NFS}/goproxy:/go \
 goproxy/goproxy
 ```
 {% endtab %}
 
 {% tab title="Swarm" %}
-
+```bash
+docker service create --replicas 1 \
+--name goproxy \
+--network staging \
+-e TZ=Asia/Shanghai \
+-p 8081:8081 \
+--mount type=bind,src=${NFS}/goproxy,dst=/go \
+--label traefik.enable=false \
+goproxy/goproxy
+```
 {% endtab %}
 {% endtabs %}
 
