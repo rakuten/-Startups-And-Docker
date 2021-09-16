@@ -24,7 +24,7 @@ description: 代码审核(Code Review)
 mkdir -p ${NFS}/phab/data
 mkdir ${NFS}/phab/exten
 
-#下载最新版汉化文件
+#下载最新版汉化文件(使用fastgit加速)
 wget -O ${NFS}/phab/exten/PhabricatorSimplifiedChineseTranslation.php \
  https://hub.fastgit.org/arielyang/phabricator_zh_Hans/raw/master/dist/\(stable\)%20Promote%202020%20Week%2037/PhabricatorSimplifiedChineseTranslation.php
  
