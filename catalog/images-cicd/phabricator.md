@@ -21,7 +21,11 @@ description: 代码审核(Code Review)
 
 ```bash
 #创建数据保存目录
-mkdir ${NFS}/phabricator
+mkdir -p ${NFS}/phab/data
+mkdir src=${NFS}/phab/exten
+
+wget -O ${NFS}/phab/exten/PhabricatorSimplifiedChineseTranslation.php \
+ https://github.com/arielyang/phabricator_zh_Hans/raw/master/dist/(stable)%20Promote%202020%20Week%2037/PhabricatorSimplifiedChineseTranslation.php
 
 ```
 
@@ -36,13 +40,32 @@ docker run -d --name phabricator \
 -p 8080:8080 -p 8443:8443 \
 -e ALLOW_EMPTY_PASSWORD=yes \
 -e PHABRICATOR_DATABASE_HOST=maria \
--v ${NFS}/phabricator:/bitnami/phabricator \
+-v ${NFS}/phab:/bitnami/phabricator \
 bitnami/phabricator:latest
 ```
 {% endtab %}
 
 {% tab title="Swarm" %}
+    docker service create --replicas 1 \
+    --name phab \
+    --hostname phab.mytrade.fun \
+    --network staging \
+    --mount type=bind,src=${NFS}/phab/data,dst=/bitnami/phabricator \
+    --mount type=bind,src=${NFS}/phab/exten,dst=/opt/bitnami/phabricator/src/extensions
+    --mount type=bind,src=/etc/timezone,dst=/etc/timezone:ro \
+    --mount type=bind,src=/etc/localtime,dst=/etc/localtime:ro \
+    bitnami/phabricator:latest
 
+    #traefik参数
+    --label traefik.enable=true \
+    --label traefik.docker.network=staging \
+    --label traefik.http.services.gitea.loadbalancer.server.port=80 \
+    --label traefik.http.routers.phab.rule="Host(\`phab.${DOMAIN}\`)" \
+    --label traefik.http.routers.phab.entrypoints=http \
+    --label traefik.http.routers.phab-sec.tls=true \
+    --label traefik.http.routers.phab-sec.tls.certresolver=dnsResolver \
+    --label traefik.http.routers.phab-sec.rule="Host(\`phab.${DOMAIN}\`)" \
+    --label traefik.http.routers.phab-sec.entrypoints=https \
 {% endtab %}
 
 {% tab title="Compose" %}
