@@ -26,7 +26,7 @@ mkdir ${NFS}/phab/exten
 
 #下载最新版汉化文件
 wget -O ${NFS}/phab/exten/PhabricatorSimplifiedChineseTranslation.php \
- https://github.com/arielyang/phabricator_zh_Hans/raw/master/dist/\(stable\)%20Promote%202020%20Week%2037/PhabricatorSimplifiedChineseTranslation.php
+ https://hub.fastgit.org/arielyang/phabricator_zh_Hans/raw/master/dist/\(stable\)%20Promote%202020%20Week%2037/PhabricatorSimplifiedChineseTranslation.php
  
  #安装MariaDB
 
@@ -42,7 +42,7 @@ docker run -d --name phabricator \
 --network=backend \
 -p 8080:80 -p 8443:8443 \
 -e ALLOW_EMPTY_PASSWORD=yes \
--e PHABRICATOR_DATABASE_HOST=mysql \
+-e PHABRICATOR_DATABASE_HOST=mariadb \
 -e PHABRICATOR_HOST=phab.${DOMAIN} \
 -e PHABRICATOR_USERNAME=admin \
 -e PHABRICATOR_PASSWORD=password \
@@ -60,7 +60,7 @@ bitnami/phabricator:latest
     --mount type=bind,src=${NFS}/phab/exten,dst=/opt/bitnami/phabricator/src/extensions
     --mount type=bind,src=/etc/timezone,dst=/etc/timezone:ro \
     --mount type=bind,src=/etc/localtime,dst=/etc/localtime:ro \
-    -e PHABRICATOR_DATABASE_HOST=mysql \
+    -e PHABRICATOR_DATABASE_HOST=mariadb \
     -e PHABRICATOR_HOST=phab.${DOMAIN} \
     -e PHABRICATOR_USERNAME=admin \
     -e PHABRICATOR_PASSWORD=password \
