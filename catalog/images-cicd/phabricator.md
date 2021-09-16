@@ -43,6 +43,8 @@ docker run -d --name phabricator \
 -p 8080:80 -p 8443:8443 \
 -e ALLOW_EMPTY_PASSWORD=yes \
 -e PHABRICATOR_DATABASE_HOST=mariadb \
+-e PHABRICATOR_DATABASE_ADMIN_USER=${MYSQL_USER} \
+-e PHABRICATOR_DATABASE_ADMIN_PASSWORD=${MYSQL_PWD} \
 -e PHABRICATOR_HOST=phab.${DOMAIN} \
 -e PHABRICATOR_USERNAME=admin \
 -e PHABRICATOR_PASSWORD=password \
@@ -55,15 +57,18 @@ bitnami/phabricator:latest
     docker service create --replicas 1 \
     --name phab \
     --hostname phab.${DOMAIN} \
+    -e TZ=Asia/Shanghai \
     --network staging \
     --mount type=bind,src=${NFS}/phab/data,dst=/bitnami/phabricator \
-    --mount type=bind,src=${NFS}/phab/exten,dst=/opt/bitnami/phabricator/src/extensions
+    --mount type=bind,src=${NFS}/phab/exten,dst=/opt/bitnami/phabricator/src/extensions \
     --mount type=bind,src=/etc/timezone,dst=/etc/timezone:ro \
     --mount type=bind,src=/etc/localtime,dst=/etc/localtime:ro \
     -e PHABRICATOR_DATABASE_HOST=mariadb \
+    -e PHABRICATOR_DATABASE_ADMIN_USER=${MYSQL_USER} \
+    -e PHABRICATOR_DATABASE_ADMIN_PASSWORD=${MYSQL_PWD} \
     -e PHABRICATOR_HOST=phab.${DOMAIN} \
     -e PHABRICATOR_USERNAME=admin \
-    -e PHABRICATOR_PASSWORD=password \
+    -e PHABRICATOR_PASSWORD=password123 \
     bitnami/phabricator:latest
 
     #traefik参数
