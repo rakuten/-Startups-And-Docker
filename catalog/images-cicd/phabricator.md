@@ -40,7 +40,7 @@ wget -O ${NFS}/phab/exten/PhabricatorSimplifiedChineseTranslation.php \
 docker run -d --name phabricator \
 --restart unless-stopped \
 --network=backend \
--p 8080:80 -p 8443:8443 \
+-p 8080:8080 -p 8443:8443 \
 -e ALLOW_EMPTY_PASSWORD=yes \
 -e PHABRICATOR_DATABASE_HOST=mariadb \
 -e PHABRICATOR_DATABASE_ADMIN_USER=${MYSQL_USER} \
@@ -74,7 +74,7 @@ bitnami/phabricator:latest
     #traefik参数
     --label traefik.enable=true \
     --label traefik.docker.network=staging \
-    --label traefik.http.services.gitea.loadbalancer.server.port=80 \
+    --label traefik.http.services.gitea.loadbalancer.server.port=8080 \
     --label traefik.http.routers.phab.rule="Host(\`phab.${DOMAIN}\`)" \
     --label traefik.http.routers.phab.entrypoints=http \
     --label traefik.http.routers.phab-sec.tls=true \
