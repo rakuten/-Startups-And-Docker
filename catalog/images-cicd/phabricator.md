@@ -28,7 +28,7 @@ mkdir ${NFS}/phab/exten
 wget -O ${NFS}/phab/exten/PhabricatorSimplifiedChineseTranslation.php \
  https://github.com/arielyang/phabricator_zh_Hans/raw/master/dist/\(stable\)%20Promote%202020%20Week%2037/PhabricatorSimplifiedChineseTranslation.php
  
- #安装MySQL或MariaDB数据库
+ #安装MariaDB
 
 ```
 
@@ -40,7 +40,7 @@ wget -O ${NFS}/phab/exten/PhabricatorSimplifiedChineseTranslation.php \
 docker run -d --name phabricator \
 --restart unless-stopped \
 --network=backend \
--p 8080:8080 -p 8443:8443 \
+-p 8080:80 -p 8443:8443 \
 -e ALLOW_EMPTY_PASSWORD=yes \
 -e PHABRICATOR_DATABASE_HOST=mariadb \
 -e PHABRICATOR_DATABASE_ADMIN_USER=${MYSQL_USER} \
@@ -48,7 +48,6 @@ docker run -d --name phabricator \
 -e PHABRICATOR_HOST=phab.${DOMAIN} \
 -e PHABRICATOR_USERNAME=admin \
 -e PHABRICATOR_PASSWORD=password \
--e PHABRICATOR_USE_LFS=true \
 -v ${NFS}/phab:/bitnami/phabricator \
 bitnami/phabricator:latest
 ```
@@ -70,13 +69,12 @@ bitnami/phabricator:latest
     -e PHABRICATOR_HOST=phab.${DOMAIN} \
     -e PHABRICATOR_USERNAME=admin \
     -e PHABRICATOR_PASSWORD=password123 \
-    -e PHABRICATOR_USE_LFS=true \
     bitnami/phabricator:latest
 
     #traefik参数
     --label traefik.enable=true \
     --label traefik.docker.network=staging \
-    --label traefik.http.services.gitea.loadbalancer.server.port=8080 \
+    --label traefik.http.services.gitea.loadbalancer.server.port=80 \
     --label traefik.http.routers.phab.rule="Host(\`phab.${DOMAIN}\`)" \
     --label traefik.http.routers.phab.entrypoints=http \
     --label traefik.http.routers.phab-sec.tls=true \
@@ -101,7 +99,7 @@ $ docker-compose up -d
 > * `APACHE_HTTPS_PORT_NUMBER`: Port used by Apache for HTTPS. Default: **8443**
 > * `PHABRICATOR_USERNAME`: Phabricator application username. Default: **user**
 > * `PHABRICATOR_PASSWORD`: Phabricator application password. Default: **bitnami1**
-> * `PHABRICATOR_EMAIL`: Phabricator application email. Default: **user@example.com**
+> * `PHABRICATOR_EMAIL`: Phabricator application email. Default: [**user@example.com**](mailto:user@example.com)
 > * `PHABRICATOR_FIRSTNAME`: Phabricator user first name. Default: **FirstName**
 > * `PHABRICATOR_LASTNAME`: Phabricator user last name. Default: **LastName**
 > * `PHABRICATOR_HOST`: Hostname used by Phabricator to form URLs. Default: **127.0.0.1**
