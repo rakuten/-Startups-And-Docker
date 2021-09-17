@@ -28,7 +28,7 @@ mkdir ${NFS}/phab/exten
 wget -O ${NFS}/phab/exten/PhabricatorSimplifiedChineseTranslation.php \
  https://github.com/arielyang/phabricator_zh_Hans/raw/master/dist/\(stable\)%20Promote%202020%20Week%2037/PhabricatorSimplifiedChineseTranslation.php
  
- #安装MariaDB
+ #安装MySQL或MariaDB数据库
 
 ```
 
@@ -48,6 +48,7 @@ docker run -d --name phabricator \
 -e PHABRICATOR_HOST=phab.${DOMAIN} \
 -e PHABRICATOR_USERNAME=admin \
 -e PHABRICATOR_PASSWORD=password \
+-e PHABRICATOR_USE_LFS=true \
 -v ${NFS}/phab:/bitnami/phabricator \
 bitnami/phabricator:latest
 ```
@@ -69,6 +70,7 @@ bitnami/phabricator:latest
     -e PHABRICATOR_HOST=phab.${DOMAIN} \
     -e PHABRICATOR_USERNAME=admin \
     -e PHABRICATOR_PASSWORD=password123 \
+    -e PHABRICATOR_USE_LFS=true \
     bitnami/phabricator:latest
 
     #traefik参数
@@ -99,7 +101,7 @@ $ docker-compose up -d
 > * `APACHE_HTTPS_PORT_NUMBER`: Port used by Apache for HTTPS. Default: **8443**
 > * `PHABRICATOR_USERNAME`: Phabricator application username. Default: **user**
 > * `PHABRICATOR_PASSWORD`: Phabricator application password. Default: **bitnami1**
-> * `PHABRICATOR_EMAIL`: Phabricator application email. Default: [**user@example.com**](mailto:user@example.com)
+> * `PHABRICATOR_EMAIL`: Phabricator application email. Default: **user@example.com**
 > * `PHABRICATOR_FIRSTNAME`: Phabricator user first name. Default: **FirstName**
 > * `PHABRICATOR_LASTNAME`: Phabricator user last name. Default: **LastName**
 > * `PHABRICATOR_HOST`: Hostname used by Phabricator to form URLs. Default: **127.0.0.1**

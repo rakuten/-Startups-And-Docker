@@ -45,6 +45,7 @@
     * [Drone](catalog/images-cicd/drone/README.md)
       * [Drone-Agent](catalog/images-cicd/drone/drone-agent.md)
     * [Jenkins](catalog/images-cicd/jenkins.md)
+    * [Locust](catalog/images-cicd/locust.md)
   * [运维应用](catalog/images-ops/README.md)
     * [Keycloak](catalog/images-ops/keycloak.md)
     * [JumpServer](catalog/images-ops/jumpserver.md)
