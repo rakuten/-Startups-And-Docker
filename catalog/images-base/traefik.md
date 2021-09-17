@@ -56,11 +56,11 @@ mkdir -p ${NFS}/traefik/config
   [entryPoints.http]
     address = ":80"
     [entryPoints.http.forwardedHeaders]
-	insecure = true
+      insecure = true
   [entryPoints.https]
     address = ":443"
     [entryPoints.https.forwardedHeaders]
-	insecure = true
+      insecure = true
 
   [entryPoints.ssh]
     address = ":8022"
